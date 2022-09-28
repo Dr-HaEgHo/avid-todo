@@ -1,38 +1,229 @@
-.App {
-  text-align: center;
+*{
+  padding : 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  font-family: Poppins, sans-serif;
+  background: #F5F5F5;
+  width: 100%;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p{
+  font-size: 14;
+  color: #1e1e1e;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.icon{
+  font-size: 30px;
+  color: #fff;
+}
+
+.open-icon{
+  font-size: 24px;
+  color: #fff;
+}
+
+
+.ri-search-icon{
+  font-size: 24px;
+  color: #1e1e1e;
+}
+
+
+.active{
+  background:rgba(255, 255, 255, 0.16)
+}
+
+.home{
+  font-family: Poppins, sans-serif;
+  display: flex;
+  height: 100vh;
+  background: brown;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ----------------------------------------------------------------------SideBar */
+
+.sidebar{
+  background: url('./assets/avid-sidebar.png');
+  background-size: cover;
+  height: 100%;
+  padding: 4rem 0px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: .2s ease-in-out;
+}
+
+.si-toggle{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+}
+
+
+
+
+.si-logo{
+  width: 60%;
+  margin: 0 0 0 40px;
+}
+
+.si-logo img{
+  width: 100%;
+}
+
+.si-links{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.si-link{
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  gap: 1rem;
+  padding: 10px 0 10px 40px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.si-link:hover{
+  background: rgba(255, 255, 255, 0.1);
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.si-link p{
+  color: #fff;
+  pointer-events: none;
+  font-size: 12px;
 }
+
+/* ----------------------------------------------------------------------Logout */
+
+.si-logout {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px 0 10px 40px;
+}
+
+.si-logout:hover {
+  background: rgba(255, 255, 255, 0.2);
+
+}
+
+.si-logout p {
+  border: none;
+  color: #fff;
+  font-size: 12px;
+}
+
+/* ----------------------------------------------------------------------RightBar */
+
+.rightbar {
+  background: url('./assets/avid-rightbar.png');
+  background-size: cover;
+  flex: 4;
+  height: 100%;
+  padding: 36px 38px ;
+}
+
+.ri-name-search{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ri-search{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ri-search-btn{
+  background: linear-gradient(to right, #500030, #01003E);
+  color :#fff;
+  border: none;
+  padding :.6rem 2rem;
+  font-size: 14px;
+  font-family: Poppins, sans-serif;
+  border-radius: 34px;
+  transition:.2s ease all;
+}
+
+.ri-name{
+  display: flex;
+  height: 40px;
+  align-items: center;
+  /* background: brown; */
+  justify-content: flex-start;
+  position: relative;
+}
+
+.ri-name-input{
+  padding:0 .8rem;
+  height: 100%;
+  border-radius: 40px;
+  border: 1px #1e1e1e solid;
+  flex: 1;
+  /* background: none; */
+  min-width: 10px;
+  font-family: Poppins, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  background: none;
+}
+
+.ri-name-input:disabled{
+  padding: 0 .2rem;
+  background: none;
+  color: #1e1e1e;
+  border: none;
+}
+
+.ri-edit-icon {
+  font-size: 24px;
+  color: #1e1e1e;
+}
+
+.ri-search-bar{
+  display: flex;
+  align-items: center;
+  border: 1px #1e1e1e solid; 
+  width: 450px;
+  height: 34px;
+  border-radius: 34px;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.ri-search-bar input{
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: none;
+}
+
+.ri-search-bar input:focus {
+  outline: none;
+  border: none;
+}
+
+.ri-search-btn:hover{
+  background: linear-gradient(to right, #500030d7, #01003ed5);
+}
+.ri-search-btn:active{
+  background: linear-gradient(to right, #500030, #01003E);
+}
+
+
