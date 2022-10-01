@@ -26,7 +26,7 @@ const AddNewTodo = ({ inputText, setInputText, todos, setTodos, newTodo, setNewT
 
   return (
     <div style={{display : newTodo ? "flex" : "none"}}  className="ri-add-new-wrapper">
-        <h1>Add New Todo { inputText }</h1>
+        <h1>Add New Todo</h1>
         <div >
             <form className="ri-add-new">
                 <input onChange={inputTextHandler} value={inputText} type="text"/>
