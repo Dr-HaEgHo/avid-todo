@@ -1,13 +1,28 @@
 import React, { useState } from 'react'
 import { Icon } from '@iconify/react';
+import ListItem from './ListItem';
+import { useEffect } from 'react';
+import AddNewTodo from './AddNewTodo';
+import Todo from './Todo';
 
-const RightBar = () => { 
+const RightBar = ({ route, setRoute, inputText, setInputText, todos, setTodos, userName, setUserName, filteredTodos, setFilteredTodos }) => { 
+    
+    const [addTodoText, setAddTodoText] = useState(inputText);
+    const [newTodo, setNewTodo] = useState(false)
+    const [canEditUsername, setCanEditUsername] = useState(false)
 
-    const details = JSON.parse(localStorage.getItem('todoUserDetails'))
+    const newTodoHandler = () => {
+        setNewTodo(!newTodo)
+    }
 
-    const [isEditing, setIsEditing] = useState(true);
-    const [name, setUserName] = useState()
+    const userNameHandler = (e) => {
+        setUserName(e.target.value)
+    }
 
+    const toggleUsername = () => {
+        setCanEditUsername(!canEditUsername)
+    }
+    
 
 
     return (
@@ -15,11 +30,11 @@ const RightBar = () => {
             <div className="ri-name-search">
                 <div className='ri-name'>
                     <p style={{fontSize: "22px", fontWeight:"500"}}>Hi, </p>
-                    <input className='ri-name-input' disabled={isEditing} type="text" placeholder='Your Name Here'/>
-                    <div style={{cursor: "pointer"}} onClick={()=>{setIsEditing(!isEditing)}}>
+                    <input onChange={userNameHandler} className='ri-name-input' disabled={!canEditUsername} type="text" value={userName} placeholder='Click to Edit Username ▶'/>
+                    <div onClick={toggleUsername} style={{cursor: "pointer"}} >
                         {
-                            isEditing === true ? <Icon className='ri-edit-icon' icon="akar-icons:edit" /> : 
-                            <Icon  className='ri-edit-icon' icon="dashicons:saved" />
+                            <Icon className='ri-edit-icon' icon="akar-icons:edit" /> 
+                            //: <Icon  className='ri-edit-icon' icon="dashicons:saved" />
                         }
                     </div>
                 </div>
@@ -33,7 +48,39 @@ const RightBar = () => {
                     <button className='ri-search-btn'> Search</button>
                 </div>
             </div>
-            <div className="ri-list-box"></div>
+            <div className="ri-list-box">
+                <div className="ri-title">
+                    <h3>My Tasks</h3>
+                    <Icon onClick={newTodoHandler} style={{display: newTodo ? "none" : "flex"}} className='ri-add-icon' icon="bx:list-plus"/>
+                </div>
+                <div className='ri-tray-wrapper'>
+                    <div className="ri-tray">
+                        <AddNewTodo
+                            inputText={inputText}
+                            setInputText={setInputText}
+                            todos={todos}
+                            setTodos={setTodos}
+                            newTodo={newTodo}
+                            setNewTodo={setNewTodo}
+                        />
+
+                        {
+                            filteredTodos && filteredTodos.length > 0 ? filteredTodos.map((todo, index) => (
+                            <Todo
+                                todo={todo}
+                                key={todo.id}
+                                id={todo.id}
+                                index={ index}
+                                text={todo.text}
+                                completed={todo.completed}
+                                todos={todos}
+                                setTodos={setTodos}
+                              />
+                            )) : (<div className='no-todos'>No Todos yet, Add a new todo ?</div>)
+                        }
+                    </div>
+                </div>  
+            </div>
         </div>
     )
 }
