@@ -71,7 +71,7 @@ const Todo = ({ id,todo, text, completed, todos, setTodos, editInput, setEditInp
                 <p style={{textDecoration: todo.completed ? "line-through" : "none"}} className="ri-wrap">{ text  }</p>
             </div>
             <div className='ri-top-icons'>
-                <Icon onClick={editHandler} style={{display: todo.edit ? "none " : "flex"}} className='ri-edit-icon' icon="ic:baseline-edit-note" />
+                <Icon onClick={editHandler} style={{display: todo.edit ? "none " : "flex"}} className='ri-edit-icon-dark' icon="ic:baseline-edit-note" />
                 <Icon onClick={deleteHandler} className='ri-delete-icon' icon="ic:baseline-delete-sweep" />
             </div>
         </div>

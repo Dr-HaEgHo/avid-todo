@@ -9,7 +9,11 @@ import { useEffect } from 'react';
 
 const Sidebar = ({route, setRoute,todos, status, setStatus, filteredTodos, setFilteredTodos, open, setOpen}) => {
 
-    const navigate =  useNavigate()
+    const navigate = useNavigate()
+      const [windowDimenion, detectHW] = useState({
+          winWidth: window.innerWidth,
+          winHeight: window.innerHeight,
+      });
 
     const links = [
         { id: 1, route:'/', title: "All Tasks", icon:<Icon className='icon' icon="bx:list-ul" />},
@@ -19,19 +23,35 @@ const Sidebar = ({route, setRoute,todos, status, setStatus, filteredTodos, setFi
     ]
 
     
+      const detectSize = () => {
+          detectHW({
+            winWidth: window.innerWidth,
+            winHeight: window.innerHeight,
+          });
+        };
     
     useEffect(() => { 
         navigate(route)
+        console.log(window.innerWidth)
     }, [route])
 
     const openHandler = () => {
         setOpen(!open)
     }
 
+      useEffect(() => {
+          window.addEventListener("resize", detectSize);
+          //conole.log(windowDimenion);
+          return () => {
+            window.removeEventListener("resize", detectSize);
+          };
+        }, [windowDimenion]);
 
 
-    return (
-        <div 
+
+    return (<>
+        {
+            windowDimenion.winWidth > 600 ? (<div 
             style={{width: open === true ? "20%" : "4%"}}
             className='sidebar'>
             <div onClick={openHandler}
@@ -62,8 +82,9 @@ const Sidebar = ({route, setRoute,todos, status, setStatus, filteredTodos, setFi
 
 
             
-            <div
-                style={{left: open === true ? "0%" : "-80vw"}}
+        </div>)
+            : (<div
+                style={{left: open === true ? "0%" : "-250px"}}
                 className="mobile-sidebar">
                 <div onClick={openHandler}
                 className="mob-toggle">
@@ -95,9 +116,9 @@ const Sidebar = ({route, setRoute,todos, status, setStatus, filteredTodos, setFi
                 <Icon className='icon' icon="tabler:logout" />
                 <p style={{display: open === true ? "block" : "none", color: "#fff"}}>Logout</p>
             </div>
-            </div>
-        </div>
-    )
+        </div>)
+            }
+    </>)
 
 }
 
