@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '@iconify/react';
 
-const AddNewTodo = ({ inputText, setInputText, todos, setTodos, newTodo, setNewTodo }) => {
+const AddNewTodo = ({ inputText, setInputText, todos, setTodos, newTodo, setNewTodo, editInput, setEditInput }) => {
     
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
@@ -13,7 +13,7 @@ const AddNewTodo = ({ inputText, setInputText, todos, setTodos, newTodo, setNewT
             e.target.disabled = true;
         } else {
             setTodos([
-                ...todos, { text: inputText, completed: false, edit:false ,id: Math.floor(Math.random() * 1000) }
+                ...todos, { text: inputText, completed: false, edit:false , id: Math.floor(Math.random() * 1000) }
             ])
             setInputText("");
         }
@@ -32,8 +32,9 @@ const AddNewTodo = ({ inputText, setInputText, todos, setTodos, newTodo, setNewT
                 <input onChange={inputTextHandler} value={inputText} type="text"/>
                 <div className="ri-add-new-icons">
                       <button onClick={submitHandler} type='submit'>
-                          <Icon className='ri-saved-icon' icon="dashicons:saved" /></button>
-                    <Icon onClick={newTodoHandler} className='ri-cancel-icon' icon="ci:close-small" />
+                          <Icon className='ri-saved-icon' icon="dashicons:saved" />
+                      </button>
+                        <Icon onClick={newTodoHandler} className='ri-cancel-icon' icon="ci:close-small" />
                 </div>
             </form>
         </div>

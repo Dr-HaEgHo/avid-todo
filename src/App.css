@@ -22,6 +22,12 @@ h3{
   margin: 0
 }
 
+.side-flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .icon{
   font-size: 30px;
   color: #fff;
@@ -85,6 +91,11 @@ h3{
 
 /* ----------------------------------------------------------------------SideBar */
 
+
+.mobile-sidebar{
+  display: none;
+}
+
 .sidebar{
   background: url('./assets/avid-sidebar.png');
   background-size: cover;
@@ -99,8 +110,8 @@ h3{
 
 .si-toggle{
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 10px;
+  right: 10px;
 
 }
 
@@ -187,6 +198,10 @@ h3{
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.ri-open-up{
+  display: none;
 }
 
 .ri-search-btn{
@@ -300,7 +315,7 @@ h3{
 .ri-list-box{
   width: 100%;
   height: 90%;
-  background: rgba(255, 255, 255, 0.7);
+  background: #f5f5f5;
   backdrop-filter: blur(10px);
   border-radius: 6px;
   position: relative;
@@ -339,7 +354,7 @@ h3{
 .ri-tray{
   display: flex;
   flex-direction: column;
-  
+  position: relative;
 }
 
 .open{
@@ -491,10 +506,13 @@ h3{
 }
 
 .ri-add-new-wrapper {
+  background: #f5f5f5;
   display: flex;
   flex-direction: column;
   padding: 1rem 0 ;
   border-bottom: 1px #d9d9d9 solid;
+  position: sticky;
+  top: 0;
 }
 
 .ri-add-new-wrapper h1{

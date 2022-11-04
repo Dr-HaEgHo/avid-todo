@@ -11,6 +11,7 @@ const Home = () => {
     const [userName, setUserName] = useState("")
     // const [status, setStatus] = useState("all")
     const [route, setRoute] = useState('/');
+    const [open, setOpen] = useState(false);
 
 
     // RUN ONLY ONCE WHEN THE APP LOADS
@@ -73,6 +74,8 @@ const Home = () => {
                 // setStatus={setStatus}
                 filteredTodos={filteredTodos}
                 setFilteredTodos={setFilteredTodos}
+                open={open}
+                setOpen={setOpen}
             />
             <RightBar
                 route={route}
@@ -85,6 +88,8 @@ const Home = () => {
                 setUserName={setUserName}
                 filteredTodos={filteredTodos}
                 setFilteredTodos={setFilteredTodos}
+                open={open}
+                setOpen={setOpen}
             />
         </div>
     )

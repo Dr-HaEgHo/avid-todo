@@ -1,0 +1,176 @@
+@media(max-width: 991px){
+    .ri-name p{
+        font-size: 14px;
+    }
+}
+
+
+/* -------------------------------------------------------------------MEDIUM TO SMALL SCREENS */
+
+@media(max-width: 600px){
+    body{
+        min-width: 0
+    }
+    .home{
+        width: 100%;
+        position: relative;
+    }
+    .sidebar{
+        position: absolute;
+        width: 10%;
+        z-index: 1234568765432;
+        left: 0px;
+    }
+    .rightbar{
+        width: 100%;
+        padding: 0;
+        justify-content: flex-start;
+        gap: 0;
+    }
+    .ri-list-box{
+        width: 96%;
+        margin: 0 auto 0rem auto;
+        height: 90vh;
+        top: -50px;
+    }
+
+    .ri-name-search{
+        flex-direction: column;
+        width: 100%;
+        height: 30vh;
+        margin: 0 auto;
+        text-align: left;
+        justify-content: center;
+        background: linear-gradient(to left, #01003E, #500030 );
+        padding: 0 0 0 0;
+        position: relative;
+    }
+
+    .ri-open-up{
+        display: block;
+        position: absolute;
+        top: 14px;
+        left: 14px;
+    }
+    .ri-name-search::after{
+        content:"";
+        position: absolute;
+        background: url("./assets/avid-rightbar.png");
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        opacity: .1;
+        pointer-events: none;
+    }
+    .ri-name-search input{
+        color: #fff;
+    }
+    .ri-name-search p{
+        font-size: 14px !important;
+        color: #fff;
+    }
+    .ri-search{
+        width: 90%;
+        display: none;
+    }
+    .ri-wrap{
+        font-size: 12px;
+    }
+    .ri-edit-icon {
+        font-size: 20px;
+        width: 24px;
+        height: 24px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .ri-edit-icon:active{
+        color: #999
+    }
+    .no-todos{
+        font-size: 12px !important;
+    }
+    .ri-add-new-wrapper h1{
+        font-size: 14px;
+    }
+    .ri-add-new-icons{
+        display: flex;
+    }
+    .ri-add-new input{
+        font-size: 14px;
+    }
+    .ri-name{
+        justify-content: flex-start;
+        text-align: left;
+    }
+    .ri-name input{
+        font-size: 14px;
+    }
+    .ri-name input::placeholder{
+        font-size: 14px;
+        color: #fff;
+        font-weight: 300;
+    }
+    .ri-name input:disabled{
+        color: #fff;
+        font-weight: 300;
+    }
+    .no-todos{
+        font-size: 14px;
+    }
+
+    .si-toggle{
+        display: none;
+    }
+    .si-logo{
+        display: none;
+    }
+    .si-links{
+        display: none;
+    }
+    .si-logout{
+        display: none;
+    }
+
+    .sidebar{
+        background: none;
+        width: 0%;
+        
+    }
+
+    .mobile-sidebar{
+        background: url('./assets/avid-sidebar.png');
+        background-size: cover;
+        height: 100vh;
+        width:80vw;
+        padding: 4rem 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 0;
+        transition: .2s ease-in-out;
+    }
+    .mob-toggle{
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+    .mob-logo{
+        width: 60%
+    }
+
+    .mob-links{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .mob-logout{
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: #fff;
+    }
+}

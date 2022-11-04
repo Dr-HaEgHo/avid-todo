@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Icon } from '@iconify/react';
 import { __RouterContext } from 'react-router';
 
-const Todo = ({ id,todo, text, completed, todos, setTodos}) => {
+const Todo = ({ id,todo, text, completed, todos, setTodos, editInput, setEditInput}) => {
     
 
     const [open, setOpen] = useState(false)
-    const [editInput, setEditInput] = useState("")
+    
 
     const deleteHandler = () => {
         setTodos(todos.filter(el => el.id !== id))
@@ -37,7 +37,7 @@ const Todo = ({ id,todo, text, completed, todos, setTodos}) => {
     }
 
     const editInputHandler = (e) => {
-        setEditInput(e.target.value)
+        setEditInput(e.target.value) 
         console.log(editInput)
     }
 
@@ -51,10 +51,10 @@ const Todo = ({ id,todo, text, completed, todos, setTodos}) => {
                     ...item, text: editInput, edit: !todo.edit
                 }
 
-            }
+                }
             return item;
         }))
-        setEditInput("")
+        // setEditInput("")
         }
     }
 
@@ -76,7 +76,7 @@ const Todo = ({ id,todo, text, completed, todos, setTodos}) => {
             </div>
         </div>
         <div style={{display: todo.edit ? "flex " : "none"}} className="ri-item-bottom">
-            <input onChange={editInputHandler} name='description' value={editInput} className='ri-item-bottom-input' type="text" />
+            <input onChange={editInputHandler} name='description' className='ri-item-bottom-input' type="text" />
             <div  className='ri-item-bottom-icons'>
                 <Icon onClick={passEditedValueHandler} className='ri-saved-icon' icon="dashicons:saved" />
                 <Icon onClick={editHandler} className='ri-cancel-icon' icon="ci:close-small" />

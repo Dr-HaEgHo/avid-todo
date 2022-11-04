@@ -5,14 +5,20 @@ import { useEffect } from 'react';
 import AddNewTodo from './AddNewTodo';
 import Todo from './Todo';
 
-const RightBar = ({ route, setRoute, inputText, setInputText, todos, setTodos, userName, setUserName, filteredTodos, setFilteredTodos }) => { 
+const RightBar = ({ route, setRoute, inputText, setInputText, todos, setTodos, userName, setUserName, filteredTodos, setFilteredTodos, open, setOpen }) => { 
     
     const [addTodoText, setAddTodoText] = useState(inputText);
+    const [searchText, setSearchText] = useState("")
     const [newTodo, setNewTodo] = useState(false)
     const [canEditUsername, setCanEditUsername] = useState(false)
+    const [editInput, setEditInput] = useState("")
 
     const newTodoHandler = () => {
         setNewTodo(!newTodo)
+    }
+
+    const filterTodos = (id) => {
+        setTodos(todos.filter(todo => todo.desc === searchText))
     }
 
     const userNameHandler = (e) => {
@@ -22,19 +28,20 @@ const RightBar = ({ route, setRoute, inputText, setInputText, todos, setTodos, u
     const toggleUsername = () => {
         setCanEditUsername(!canEditUsername)
     }
-    
 
 
     return (
         <div className='rightbar'>
             <div className="ri-name-search">
+                <div onClick={() => {setOpen(!open)}} className="ri-open-up">
+                    <Icon className='open-icon' icon="bx:right-arrow-circle" />
+                </div>
                 <div className='ri-name'>
                     <p style={{fontSize: "22px", fontWeight:"500"}}>Hi, </p>
                     <input onChange={userNameHandler} className='ri-name-input' disabled={!canEditUsername} type="text" value={userName} placeholder='Click to Edit Username ▶'/>
                     <div onClick={toggleUsername} style={{cursor: "pointer"}} >
                         {
-                            <Icon className='ri-edit-icon' icon="akar-icons:edit" /> 
-                            //: <Icon  className='ri-edit-icon' icon="dashicons:saved" />
+                            canEditUsername ? <Icon  className='ri-edit-icon' icon="dashicons:saved" /> : <Icon className='ri-edit-icon' icon="akar-icons:edit" /> 
                         }
                     </div>
                 </div>
@@ -62,6 +69,8 @@ const RightBar = ({ route, setRoute, inputText, setInputText, todos, setTodos, u
                             setTodos={setTodos}
                             newTodo={newTodo}
                             setNewTodo={setNewTodo}
+                            editInput={editInput}
+                            setEditInput={setEditInput}
                         />
 
                         {
@@ -75,6 +84,8 @@ const RightBar = ({ route, setRoute, inputText, setInputText, todos, setTodos, u
                                 completed={todo.completed}
                                 todos={todos}
                                 setTodos={setTodos}
+                                editInput={editInput}
+                                setEditInput={setEditInput}
                               />
                             )) : (<div className='no-todos'>No Todos yet, Add a new todo ?</div>)
                         }
